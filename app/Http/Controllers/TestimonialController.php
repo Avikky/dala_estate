@@ -130,7 +130,7 @@ class TestimonialController extends Controller
             'image' => $image,
         ]);
 
-        return redirect()->back()->with('success', 'Testimonial successful created!');
+        return redirect()->back()->with('success', 'Testimonial successfully Updated!');
     }
 
     /**

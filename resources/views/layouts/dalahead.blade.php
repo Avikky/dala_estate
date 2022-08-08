@@ -172,11 +172,9 @@
                 <div class="footer-top">
                     <div class="container">
                         <div class="row pb-75">
-                            <div
-                                class="col-xl-4 col-lg-6 col-md-6 col-sm-6 pe-xl-5"
-                            >
+                            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 pe-xl-5">
                                 <div class="footer-widget">
-                                    <a href="index.html" class="footer-logo">
+                                    <a href="{{url('/')}}" class="footer-logo">
                                         <img
                                             src="{{asset('assets2/img/DALA_ESTATE_LOGO.png')}}"
                                             alt="Image"
@@ -188,59 +186,11 @@
                                         incidunt labore dolore magna aliqu core
                                         tetur adip iscing eliteous sedun amet.
                                     </p>
-                                    <h6>Language</h6>
-                                    <div class="select-lang">
-                                        <div
-                                            class="navbar-option-item navbar-language dropdown language-option"
-                                        >
-                                            <button
-                                                class="dropdown-toggle"
-                                                type="button"
-                                                data-bs-toggle="dropdown"
-                                                aria-haspopup="true"
-                                                aria-expanded="false"
-                                            >
-                                                <span class="lang-name"></span>
-                                            </button>
-                                            <div
-                                                class="dropdown-menu language-dropdown-menu"
-                                            >
-                                                <a
-                                                    class="dropdown-item"
-                                                    href="#"
-                                                >
-                                                    <img
-                                                        src="assets/img/uk.png"
-                                                        alt="flag"
-                                                    />
-                                                    English
-                                                </a>
-                                                <a
-                                                    class="dropdown-item"
-                                                    href="#"
-                                                >
-                                                    <img
-                                                        src="assets/img/china.png"
-                                                        alt="flag"
-                                                    />
-                                                    简体中文
-                                                </a>
-                                                <a
-                                                    class="dropdown-item"
-                                                    href="#"
-                                                >
-                                                    <img
-                                                        src="assets/img/uae.png"
-                                                        alt="flag"
-                                                    />
-                                                    العربيّة
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
+                                  
+                                   
                                 </div>
                             </div>
-                            <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6">
+                            <!-- <div class="col-xl-2 col-lg-6 col-md-6 col-sm-6">
                                 <div class="footer-widget">
                                     <h3 class="footer-widget-title">
                                         Popular Cities
@@ -314,78 +264,56 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> -->
                             <div
-                                class="col-xl-3 col-lg-6 col-md-6 col-sm-6 ps-xl-5"
-                            >
+                                class="col-xl-4 col-lg-6 col-md-6 col-sm-6 ps-xl-5">
                                 <div class="footer-widget">
                                     <h3 class="footer-widget-title">
                                         Quick Links
                                     </h3>
                                     <ul class="footer-menu list-style">
                                         <li>
-                                            <a
-                                                href="about.html"
-                                                target="_blank"
-                                            >
-                                                <i
-                                                    class="ri-arrow-right-s-line"
-                                                ></i>
+                                            <a href="{{route('about')}}" target="_blank">
+                                                <i class="ri-arrow-right-s-line"></i>
                                                 About Us
                                             </a>
                                         </li>
                                         <li>
-                                            <a
-                                                href="agents.html"
-                                                target="_blank"
-                                            >
-                                                <i
-                                                    class="ri-arrow-right-s-line"
-                                                ></i>
-                                                Agents
+                                            <a href="{{route('service')}}" target="_blank">
+                                                <i class="ri-arrow-right-s-line"></i>
+                                                Services
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="blog.html" target="_blank">
-                                                <i
-                                                    class="ri-arrow-right-s-line"
-                                                ></i>
-                                                Latest News
+                                            <a href="{{route('housing')}}" target="_blank">
+                                                <i class="ri-arrow-right-s-line"></i>
+                                                Housing
                                             </a>
                                         </li>
                                         <li>
-                                            <a
-                                                href="contact.html"
-                                                target="_blank"
-                                            >
-                                                <i
-                                                    class="ri-arrow-right-s-line"
-                                                ></i>
+                                            <a href="{{route('blog')}}" target="_blank">
+                                                <i class="ri-arrow-right-s-line"></i>
+                                                Blog
+                                            </a>
+                                        </li> 
+                                        <li>
+                                            <a href="{{route('contact')}}" target="_blank">
+                                                <i class="ri-arrow-right-s-line"></i>
                                                 Contact Us
                                             </a>
                                         </li>
-                                        <li>
-                                            <a
-                                                href="privacy-policy.html"
-                                                target="_blank"
-                                            >
-                                                <i
-                                                    class="ri-arrow-right-s-line"
-                                                ></i>
+                                        <!-- <li>
+                                            <a href="privacy-policy.html" target="_blank">
+                                                <i class="ri-arrow-right-s-line"></i>
                                                 Privacy Policy
                                             </a>
                                         </li>
                                         <li>
-                                            <a
-                                                href="terms-of-service.html"
-                                                target="_blank"
-                                            >
-                                                <i
-                                                    class="ri-arrow-right-s-line"
-                                                ></i>
+                                            <a href="terms-of-service.html" target="_blank">
+                                                <i class="ri-arrow-right-s-line"></i>
                                                 Terms &amp; Conditions
                                             </a>
-                                        </li>
+                                        </li> -->
                                     </ul>
                                 </div>
                             </div>

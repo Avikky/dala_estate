@@ -135,7 +135,7 @@
                     </li>
 
                     <li class="nav-item">
-                      <a href="{{ url('/admin/blog') }}" class="nav-link ml-3">
+                      <a href="{{ url('/admin/faq/allfaq') }}" class="nav-link ml-3">
                         <i class="far fa-circle nav-icon"></i>
                         <p>All FAQ</p>
                       </a>
@@ -194,9 +194,9 @@
               </li>
 
               <li class="nav-item">
-                <a href="{{ url('/admin/loan') }}" class="nav-link">
-                  <i class="nav-icon fa fa-book text-green"></i>
-                  <p>Loan Application </p><span class="badge badge-info badge-sm float-right">{{ $loancount }}</span>
+                <a href="{{ url('/admin/contact') }}" class="nav-link">
+                  <i class="nav-icon fa fa-contact text-green"></i>
+                  <p>Contact</p><span class="badge badge-info badge-sm float-right"></span>
                 </a>
               </li>
 

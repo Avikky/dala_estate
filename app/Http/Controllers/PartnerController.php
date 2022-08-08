@@ -50,6 +50,7 @@ class PartnerController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
+            'title' => 'required|string',
             'image' => 'required|mimes:png,jpeg,jpg',
         ]);
 
@@ -59,6 +60,7 @@ class PartnerController extends Controller
         } 
 
         partner::create([
+            'name' => $request->title,
             'image' => $image,
         ]);
 
@@ -96,7 +98,28 @@ class PartnerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $this->validate($request, [
+            'title' => 'required|string',
+            'image' => 'required|mimes:png,jpeg,jpg',
+        ]);
+
+        // return $request;
+
+        $partner = Partner::find($id);
+
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $image = Storage::disk('public')->putFile('partner', $file);
+        }else{
+            $image = $partner->image;
+        }
+
+       $partner->update([
+            'name' => $request->title,
+            'image' => $image,
+        ]);
+
+        return redirect()->back()->with('success', 'Partner successful Updated!');
     }
 
     /**

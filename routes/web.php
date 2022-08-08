@@ -137,6 +137,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::group(['prefix' => 'faq'], function(){
             Route::get('/', 'FaqController@index');
             Route::post('/create', 'FaqController@create');
+            Route::get('/allfaq', 'FaqController@allfaq');
     });
 
     Route::group(['prefix' => 'faq'], function(){
@@ -173,6 +174,12 @@ Route::group(['prefix' => 'admin'], function(){
     Route::group(['prefix' => 'partners'], function(){
         Route::get('/', 'PartnerController@index');
         Route::post('', 'PartnerController@store');
+        Route::put('{id}', 'PartnerController@update');
         Route::delete('{id}', 'PartnerController@destroy');
+    });
+
+    Route::group(['prefix' => 'contact'], function(){
+        Route::get('/', 'ContactController@index');
+        Route::post('/create', 'ContactController@store');
     });
 });

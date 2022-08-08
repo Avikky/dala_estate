@@ -98,9 +98,11 @@
                                     </ul>
                                 </div>
                             </div>
+                            <!-- id="contactForm" -->
                             <div class="col-lg-6 col-12">
                                 <div class="contact-form">
-                                    <form class="form-wrap" id="contactForm">
+                                    <form class="form-wrap" id="contactForm" action="{{url('/admin/contact/create')}}" method="post">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
@@ -118,7 +120,7 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <input type="text" name="msg_subject" placeholder="Subject*"
+                                                    <input type="text" name="subject" placeholder="Subject*"
                                                         id="msg_subject" required
                                                         data-error="Please enter your subject">
                                                     <div class="help-block with-errors"></div>
@@ -149,7 +151,8 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <button type="submit" class="btn style2">Send Message</button>
-                                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                                 <!-- id="msgSubmit" -->
+                                                <div class="h3 text-center hidden"></div>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>

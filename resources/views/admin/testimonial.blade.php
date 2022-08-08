@@ -125,7 +125,7 @@
                             </button>
                           </div>
 
-                          <form method="POST" action="{{ url('admin/offers') }}/{{ $testimonial->id }}">
+                          <form method="POST" action="{{ url('admin/testimonial') }}/{{ $testimonial->id }}">
                             @csrf
                             {{ method_field('PUT') }}
                             <div class="modal-body">

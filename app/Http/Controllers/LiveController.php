@@ -15,6 +15,7 @@ use App\Product;
 use App\Project;
 use App\Gallery;
 use App\Service;
+use App\Faq;
 use App\Management;
 use App\Testimonial;
 use Illuminate\Http\File;
@@ -39,9 +40,15 @@ class LiveController extends Controller
         $posts = Post::where('deleted_at', NULL)->latest()->take(3)->get();
         $housings = Housing::where('deleted_at', NULL)->limit(6)->get();
         $galleries = Gallery::where('deleted_at', NULL)->latest()->take(6)->get();
+        $faqs_dala1 = Faq::with('faqcat')->where('deleted_at', NULL)->where('faq_cats_id', 3)->get();
+        $partners = Partner::where('deleted_at', NULL)->get();
+        $testimonials = Testimonial::where('deleted_at', NULL)->get();
+
+        // return $faqs_dala1;
+
         // $products = Product::where('deleted_at', NULL)->limit(6)->get();
         
-        return view('live.index', compact('sliders', 'services', 'housings', 'posts', 'galleries'));
+        return view('live.index', compact('sliders', 'services', 'housings', 'posts', 'galleries', 'faqs_dala1', 'partners', 'testimonials'));
     }
 
     public function gallery()

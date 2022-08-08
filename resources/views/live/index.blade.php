@@ -492,33 +492,37 @@
                         <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
                             <div class="section-title style2 text-center mb-40">
                                 <span>SEE OUR REVIEW</span>
-                                <h2>What Our Users Say About Us</h2>
+                                <h3>What Our Users Say About Us</h3>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="testimonial-slider-three owl-carousel">
+                    @forelse($testimonials as $testimonial)
                     <div class="testimonial-card style3">
                         <p class="client-quote">
-                            Lorem ipsum dolor sit amet adip elitions repellat
-                            tetur delni vel quam aliq earum explibo dolor eme
-                            fugiat enim illumon amet sit.
+                            {{$testimonial->description}}
                         </p>
                         <div class="client-info-wrap">
                             <div class="client-img">
                                 <img
-                                    src="{{asset('assets2/img/clients/client-1.jpg')}}"
+                                    src="{{asset('storage/'. $testimonial->image)}}"
 
                                     alt="Image"
                                 />
                             </div>
                             <div class="client-info">
-                                <h5>David Watson</h5>
-                                <span>Director, BAT</span>
+                                <h5>{{$testimonial->name}}</h5>
+                                <span>{{$testimonial->post}}</span>
                             </div>
                         </div>
                     </div>
-                    <div class="testimonial-card style3">
+                    @empty
+
+                    @endforelse
+
+
+                    <!-- <div class="testimonial-card style3">
                         <p class="client-quote">
                             Lorem ipsum dolor sit amet adip elitions repellat
                             tetur delni vel quam aliq earum explibo dolor eme
@@ -596,7 +600,7 @@
                                 <span>Enterpreneur</span>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
     </section>
 <!--end testimonial -->
@@ -612,113 +616,72 @@
                             </div>
                         </div>
                     </div>
+                   
                     <div class="row gx-5 align-items-center">
                         <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200">
                             <div class="faq-img-wrap">
                                 <img src="{{asset('assets2/img/faq-img-3.png')}}" alt="Image">
                             </div>
                         </div>
+                         
                         <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
-                            <div class="faq-content">
-                                <div class="accordion" id="accordionExample">
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingOne">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#collapseOne" aria-expanded="true"
-                                                aria-controls="collapseOne">
-                                                <span>
-                                                    <i class="flaticon-plus plus"></i>
-                                                    <i class="flaticon-minus-sign minus"></i>
-                                                </span>
-                                                What Is The Price range Of Your Properties?
-                                            </button>
-                                        </h2>
-                                        <div id="collapseOne" class="accordion-collapse collapse show"
-                                            aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <div class="single-product-text">
-                                                    <p>Lorem ipsum dolor sit amet consec tetur adipisicing elit.
-                                                        Quisquam sit laborum est aliquam. Dicta fuga soluta eius
-                                                        exercitationem porro modi. Exercitationem eveniet aliquam
-                                                        repudiandae non, sequi mollitia at iusto</p>
+                            @forelse($faqs_dala1 as $faqda1)
+                                <div class="faq-content">
+                                    <div class="accordion" id="accordionExample{{$faqda1->id}}">
+                                        
+                                        <div class="accordion-item">
+                                            
+                                            <h2 class="accordion-header" id="headingOne{{$faqda1->id}}">
+                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                    data-bs-target="#collapseOne{{$faqda1->id}}" aria-expanded="true"
+                                                    aria-controls="collapseOne{{$faqda1->id}}">
+                                                    <span>
+                                                        <i class="flaticon-plus plus"></i>
+                                                        <i class="flaticon-minus-sign minus"></i>
+                                                    </span>
+                                                {{$faqda1->question}}
+                                                </button>
+                                            </h2>
+                                            <div id="collapseOne{{$faqda1->id}}" class="accordion-collapse collapse {{($loop->index == 0) ? 'show' : ''}}"
+                                                aria-labelledby="headingOne" data-bs-parent="#accordionExample{{$faqda1->id}}">
+                                                <div class="accordion-body">
+                                                    <div class="single-product-text">
+                                                        <p>
+                                                        {{substr(strip_tags($faqda1->answer), 0)}}  
+                                                        </p>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                         </div>
+
                                     </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingTwo">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                aria-expanded="false" aria-controls="collapseTwo">
-                                                <span>
-                                                    <i class="flaticon-plus plus"></i>
-                                                    <i class="flaticon-minus-sign minus"></i>
-                                                </span>
-                                                How Long Will It take To Process My Application?
-                                            </button>
-                                        </h2>
-                                        <div id="collapseTwo" class="accordion-collapse collapse "
-                                            aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p>Lorem ipsum dolor sit amet consec tetur adipisicing elit. Quisquam
-                                                    sit laborum est aliquam. Dicta fuga soluta eius exercitationem porro
-                                                    modi. Exercitationem eveniet aliquam repudiandae non, sequi mollitia
-                                                    at iusto</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingThree">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                aria-expanded="false" aria-controls="collapseThree">
-                                                <span>
-                                                    <i class="flaticon-plus plus"></i>
-                                                    <i class="flaticon-minus-sign minus"></i>
-                                                </span>
-                                                What If I Need To Move Out Before My Lease Exercise?
-                                            </button>
-                                        </h2>
-                                        <div id="collapseThree" class="accordion-collapse collapse"
-                                            aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <p>Lorem ipsum dolor sit amet consec tetur adipisicing elit. Quisquam
-                                                    sit laborum est aliquam. Dicta fuga soluta eius exercitationem porro
-                                                    modi. Exercitationem eveniet aliquam repudiandae non, sequi mollitia
-                                                    at iusto</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="headingfour">
-                                            <button class="accordion-button collapsed" type="button"
-                                                data-bs-toggle="collapse" data-bs-target="#collapsefour"
-                                                aria-expanded="true" aria-controls="collapsefour">
-                                                <span>
-                                                    <i class="flaticon-plus plus"></i>
-                                                    <i class="flaticon-minus-sign minus"></i>
-                                                </span>
-                                                What Our IT Consultants Suggest On New Topics?
-                                            </button>
-                                        </h2>
-                                        <div id="collapsefour" class="accordion-collapse collapse "
-                                            aria-labelledby="headingfour" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body">
-                                                <div class="single-product-text">
-                                                    <p>Lorem ipsum dolor sit amet consec tetur adipisicing elit.
-                                                        Quisquam sit laborum est aliquam. Dicta fuga soluta eius
-                                                        exercitationem porro modi. Exercitationem eveniet aliquam
-                                                        repudiandae non, sequi mollitia at iusto</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                    
+                                </div> 
+                            @empty
+                            @endforelse 
                         </div>
+                    
                     </div>
+                   
                 </div>
             </section>
 <!-- End Frequently Asked Questions -->
+<!-- Partners begins here -->
+     <div class="partner-wrap ptb-100">
+                <div class="container">
+                    <div class="partner-slider owl-carousel">
+                        @forelse($partners as $partner)
+                            <div class="partner-item">
+                            <img src="{{asset('storage/'.$partner->image)}}" alt="Image">
+                        </div>
+                        @empty
+
+                        @endforelse
+                    
+                    </div>
+                </div>
+            </div>
+<!-- End Partners begins here -->
 
 @endsection

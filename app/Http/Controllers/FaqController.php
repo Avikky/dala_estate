@@ -21,8 +21,9 @@ class FaqController extends Controller
         $this->validate($request, [
 
             'question' => 'required|max:250',
-            'answer' => 'max:250',
+            'answer' => 'required',
             'faq_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'faqcat' => 'required'
 
         ]);
 
@@ -39,7 +40,7 @@ class FaqController extends Controller
         }
 
         Faq::create([
-            'faq_cats_id' => 1,
+            'faq_cats_id' => $request->faqcat,
             'question' => $request->question,
             'answer' => $request->answer,
             'slug' => $slug,
@@ -48,5 +49,12 @@ class FaqController extends Controller
         ]);
 
         return back()->with('success', 'Frequently asked question successfully created!');
+    }
+
+    public function allfaq()
+    {
+        $allfaq = Faq::where('deleted_at', NULL)->get();
+        // return $allfaq;
+        return view('admin.allfaq', compact('allfaq'));
     }
 }

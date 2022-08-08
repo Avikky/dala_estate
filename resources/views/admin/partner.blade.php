@@ -45,6 +45,10 @@
                       @csrf
                       <div class="modal-body">
                         <div class="form-group">
+                          <label>Title</label>
+                          <input type="text" name="title" class="form-control" required>
+                        </div>
+                        <div class="form-group">
                           <label>Logo</label>
                           <input type="file" name="image" class="form-control" required>
                         </div>
@@ -63,6 +67,8 @@
               <table class="table table-hover" id="example2">
                 <thead>
                   <tr>
+                    <th>S/N</th>
+                    <th>Title</th>
                     <th>Image</th>
                     <th>Action</th>
                   </tr>
@@ -70,9 +76,18 @@
                 <tbody>
                   @forelse($partners as $partner)
                     <tr>
+                      <td>
+                          {{$loop->index +1}}
+                      </td>
+                      <td>
+                          {{$partner->name}}
+                      </td>
                       <td><img src="{{ asset('storage') }}/{{ $partner->image }}" style="height: 80px; width: 120px">
                       </td>
                       <td>
+                        <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#editpartner{{ $partner->id }}">
+                          <i class="fa fa-edit"></i>
+                        </a>
 
                         <a href="#" onclick="event.preventDefault(); document.getElementById('delete{{ $partner->id }}').submit();" class="text-red"><i class="fa fa-trash text-red"></i>
                         </a>
@@ -83,6 +98,37 @@
                         </form>  
                       </td>
                     </tr> 
+                    <div class="modal fade mt-5" id="editpartner{{$partner->id}}" tabindex="-1" role="dialog" aria-labelledby="addSessionLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="addCourseLabel">Edit Partner</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+
+                          <form method="POST" action="{{ url('admin/partners') }}/{{$partner->id}}" enctype="multipart/form-data">
+                            @csrf
+                            {{ method_field('PUT') }}
+                            <div class="modal-body">
+                              <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" name="title" class="form-control" required>
+                              </div>
+                              <div class="form-group">
+                                <label>Logo</label>
+                                <input type="file" name="image" class="form-control" required>
+                              </div>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <button type="submit" class="btn btn-primary">Update</button>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
                   @empty
                   @endforelse 
                 </tbody>                
