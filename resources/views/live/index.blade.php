@@ -3,33 +3,33 @@
 @section('pageTitle', 'Home')
 @section('content')
 
-<!-- Banner -->
-     <section class="hero-wrap style3">
-        <div class="hero-slider-two owl-carousel">
+ <section class="hero-wrap style2">
+    <div class="container-fluid">
+        <div class="hero-slider-one owl-carousel">
             @foreach($sliders as $slider)
-            <div class="hero-slide-item"
-            style="background-image: url( {{asset('storage/'.$slider->image) }} );
-            background-position: center center; background-size: cover;background-repeat: no-repeat;
-            background-color: #ddd;">
+            <div class="hero-slide-item bg-f"  style="background-image: url( {{asset('storage/'.$slider->image) }} );
+            background-position: center center; background-size: cover;background-repeat: no-repeat;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-8 col-sm-10">
+                            <div class="hero-content">
+                                <h1>{{$slider->title}}</h1>
+                                <p>
+                                    {{$slider->description}}
+                                </p>
+                                <a href="#" class="btn style2">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             @endforeach
         </div>
-        <div class="hero-content">
-            <div class="row">
-                @foreach($sliders->take(1) as $slider)
-                    <div class="col-xxl-8 offset-xxl-2 col-xl-10 offset-xl-1 col-lg-10 offset-lg-1">
-                        <h3 style="color: #fff;" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200">
-                            {{$slider->title}}
-                        </h3>
-                        <p data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300">
-                            {{$slider->description}}
-                        </p>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </section>
-<!-- End Banner -->  
+    </div>
+</section>
+
+
+
 <!-- building preview -->
      <section class="city-wrap style3 ptb-100">
                 <img
@@ -416,70 +416,33 @@
                         </div>
                     </div>
                     <div class="outer">
-                        <div id="big" class="owl-carousel owl-theme">
-                            <div class="video-bg video-bg-1 bg-f">
-                                <a
-                                    class="play-video"
-                                    data-fancybox=""
-                                    href="#"
-                                >
-                                    <span class="play-now icon"
-                                        ><i class="flaticon-play-1"></i>
-                                        <span class="ripple"></span
-                                    ></span>
-                                </a>
-                            </div>
-                            <div class="video-bg video-bg-2 bg-f">
-                                <a
-                                    class="play-video"
-                                    data-fancybox=""
-                                    href="#"
-                                >
-                                    <span class="play-now icon"
-                                        ><i class="flaticon-play-1"></i>
-                                        <span class="ripple"></span
-                                    ></span>
-                                </a>
-                            </div>
-                            <div class="video-bg video-bg-3 bg-f">
-                                <a
-                                    class="play-video"
-                                    data-fancybox=""
-                                    href="#"
-                                >
-                                    <span class="play-now icon"
-                                        ><i class="flaticon-play-1"></i>
-                                        <span class="ripple"></span
-                                    ></span>
-                                </a>
+                             <div class="pb-100">
+                    <div class="container">
+                        <div class="video-wrap style1 video-bg-1 bg-f ptb-100">
+                            <div class="row align-items-center">
+                                <div class="col-lg-7 col-md-8 order-lg-1 order-md-1 order-2">
+                                    <div class="video-content">
+                                        <div class="content-title style1">
+                                            <span>Open Video</span>
+                                            <h2>Intro video will go in here</h2>
+                                            <p>Best Strategic planning dolor sit amet consectetur adipiscing elit. Scel
+                                                erus isque ametus odio velit auctor nam elit nulla eget sodales dui
+                                                pulvinar. Best strategic planning dolor sit amet.</p>
+                                        </div>
+                                        <a href="#" class="btn style2">Check Out Our Property Listings</a>
+                                    </div>
+                                </div>
+                                <div class="col-lg-5 col-md-4 order-lg-2 order-md-2 order-1">
+                                    <a class="play-video" data-fancybox=""
+                                        href="https://youtu.be/-76MIRKRK04">
+                                        <span class="play-now icon"><i class="flaticon-play-1"></i>
+                                            <span class="ripple"></span></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                        <div id="thumbs" class="owl-carousel owl-theme">
-                            <div class="video-item">
-                                <img
-                                    src="{{asset('assets2/img/property/property-14.jpg')}}"
-                                    alt="Image"
-                                />
-                            </div>
-                            <div class="video-item">
-                                <img
-                                    src="{{asset('assets2/img/property/property-15.jpg')}}"
-                                    alt="Image"
-                                />
-                            </div>
-                            <div class="video-item">
-                                <img
-                                    src="{{asset('assets2/img/property/property-16.jpg')}}"
-                                    alt="Image"
-                                />
-                            </div>
-                            <div class="video-item">
-                                <img
-                                    src="{{asset('assets2/img/property/property-32.jpg')}}"
-                                    alt="Image"
-                                />
-                            </div>
-                        </div>
+                    </div>
+                </div>
                     </div>
                 </div>
     </div>
@@ -668,20 +631,20 @@
             </section>
 <!-- End Frequently Asked Questions -->
 <!-- Partners begins here -->
-     <div class="partner-wrap ptb-100">
-                <div class="container">
-                    <div class="partner-slider owl-carousel">
-                        @forelse($partners as $partner)
-                            <div class="partner-item">
-                            <img src="{{asset('storage/'.$partner->image)}}" alt="Image">
-                        </div>
-                        @empty
-
-                        @endforelse
-                    
-                    </div>
+    <div class="partner-wrap ptb-100">
+        <div class="container">
+            <div class="partner-slider owl-carousel">
+                @forelse($partners as $partner)
+                    <div class="partner-item">
+                    <img src="{{asset('storage/'.$partner->image)}}" alt="Image">
                 </div>
+                @empty
+
+                @endforelse
+            
             </div>
+        </div>
+    </div>
 <!-- End Partners begins here -->
 
 @endsection

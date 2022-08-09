@@ -56,22 +56,22 @@
                   <div class="form-body">
                     <div class="modal-body">
                       <div class="form-group">
-                        <label>Bank Name</label>
+                        <label>Site Name</label>
                         <input type="text" name="sitename" class="form-control" required="" value="{{ $setting->sitename }}">
                       </div>
 
                       <div class="form-group">
-                        <label>Bank Email</label>
+                        <label>Site Email</label>
                         <input type="email" name="email" class="form-control" value="{{ $setting->email }}" required="">
                       </div>
 
                       <div class="form-group">
-                        <label>Phone Number</label>
+                        <label>Site Phone Number</label>
                         <input type="tel" name="phone" class="form-control" value="{{ $setting->phone }}" required="">
                       </div>
 
                       <div class="form-group">
-                        <label>Bank Address</label>
+                        <label>Business Address</label>
                         <input type="text" name="address" class="form-control" value="{{ $setting->address }}" required="">
                       </div>
                       <div class="form-group">

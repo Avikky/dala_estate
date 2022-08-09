@@ -21,34 +21,41 @@
                         <div class="row">
                             <div class="col-md-6 ">
                                 <div class="section-title style2 text-center mb-40">
-                                    <span>ABOUT DALA PROPERTY</span>
-                                    <h2>Fela Awesome Story</h2>
+                                    <span>Our Story</span>
+                                    <h2>ABOUT DALA PROPERTY</h2>
                                     <p style="text-align:justify">{{substr(strip_tags($setting->about), 0)}}</p>
                                     
                                 </div>
-                                <div class="col-xl-6">
-                                    <div class="col-5">
-                                        <!-- <div class="about-bg-2 bg-f"></div> -->
-                                    </div>
-                                </div>
                             </div>
-                        </div>
-                        <div class="about-img-wrap">
-                            <div class="row">
-                                <div class="col-5">
-                                    <div class="about-bg-2 bg-f"></div>
-                                </div>
-                                <div class="col-4">
-                                    <div class="about-bg-3 bg-f"></div>
-                                </div>
-                                <div class="col-3">
-                                    <div class="about-bg-4 bg-f"></div>
-                                </div>
+                            <div class="col-md-6">
+                                <img src="{{asset('images/abt-img1.png')}}" alt="">
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <section class="advantage-wrap ptb-100">
+                    <div class="container">
+                        <div class="section-title style1 text-center mb-40">
+                            <span>Landmarks</span>
+                            <h2>Our Landmark</h2>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-6 col-sm-6">
+                                <img src="{{asset('images/land3.png')}}" alt="Image">
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <img src="{{asset('images/land4.png')}}" alt="Image">
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                               <img src="{{asset('images/land1.png')}}" alt="Image">
+                            </div>
+                             <div class="col-md-6 col-sm-6">
+                               <img src="{{asset('images/land2.png')}}" alt="Image">
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <section class="advantage-wrap ptb-100">
                     <div class="container">
@@ -93,9 +100,6 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12 text-center mt-10">
-                                <a href="listings-one.html" class="btn style1">Explore Properties</a>
-                            </div>
                         </div>
                     </div>
                 </section>
@@ -109,17 +113,17 @@
                                     <div class="video-content">
                                         <div class="content-title style1">
                                             <span>Open Video</span>
-                                            <h2>Attend A Virtual Open Apartments</h2>
+                                            <h2>Intro video will go in here</h2>
                                             <p>Best Strategic planning dolor sit amet consectetur adipiscing elit. Scel
                                                 erus isque ametus odio velit auctor nam elit nulla eget sodales dui
                                                 pulvinar. Best strategic planning dolor sit amet.</p>
                                         </div>
-                                        <a href="listings-two.html" class="btn style2">Explore Property</a>
+                                        <a href="#" class="btn style2">Check Out Our Property Listings</a>
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-md-4 order-lg-2 order-md-2 order-1">
                                     <a class="play-video" data-fancybox=""
-                                        href="https://www.youtube.com/watch?v=Qj59_LGUBvE&amp;t=1s">
+                                        href="https://youtu.be/-76MIRKRK04">
                                         <span class="play-now icon"><i class="flaticon-play-1"></i>
                                             <span class="ripple"></span></span>
                                     </a>
@@ -186,169 +190,22 @@
                 </div>
 
 
-                <section class="testimonial-wrap ptb-100 bg-seashell ">
-                    <img src="assets/img/shape-1.png" alt="Image" class="testimonial-shape-one">
-                    <div class="container">
-                        <div class="section-title style1 text-center mb-40">
-                            <span>See Our Reviews</span>
-                            <h2>What Our Users Say About Us</h2>
-                        </div>
-                        <div class="testimonial-slider-one owl-carousel">
-                            <div class="testimonial-card style1">
-                                <div class="client-img">
-                                    <img src="{{asset('assets2/img/clients/client-1.jpg')}}" alt="Image">
-                                </div>
-                                <div class="quote-wrap">
-                                    <p class="client-quote">
-                                        Lorem ipsum dolor sit amet adip elitions repellat tetur delni vel quam aliq
-                                        earum explibo dolor eme fugiat enim illumon.
-                                    </p>
-                                    <div class="client-info-wrap">
-                                        <div class="client-info">
-                                            <h5>Alexandar Mason</h5>
-                                            <span>Managing Director, IBAC</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <i class="flaticon-star"></i>
-                                            4.8
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card style1">
-                                <div class="client-img">
-                                    <img src="{{asset('assets2/img/clients/client-2.jpg')}}" alt="Image">
-                                </div>
-                                <div class="quote-wrap">
-                                    <p class="client-quote">
-                                        Lorem ipsum dolor sit amet adip elitions repellat tetur delni vel quam aliq
-                                        earum explibo dolor eme fugiat enim illumon.
-                                    </p>
-                                    <div class="client-info-wrap">
-                                        <div class="client-info">
-                                            <h5>David Watson</h5>
-                                            <span>Director, BAT</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <i class="flaticon-star"></i>
-                                            4.7
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card style1">
-                                <div class="client-img">
-                                    <img src="{{asset('assets2/img/clients/client-3.jpg')}}" alt="Image">
-                                </div>
-                                <div class="quote-wrap">
-                                    <p class="client-quote">
-                                        Lorem ipsum dolor sit amet adip elitions repellat tetur delni vel quam aliq
-                                        earum explibo dolor eme fugiat enim illumon.
-                                    </p>
-                                    <div class="client-info-wrap">
-                                        <div class="client-info">
-                                            <h5>Tom Haris</h5>
-                                            <span>Civil Engineer, Olleo</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <i class="flaticon-star"></i>
-                                            4.7
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card style1">
-                                <div class="client-img">
-                                    <img src="{{asset('assets2/img/clients/client-4.jpg')}}" alt="Image">
-                                </div>
-                                <div class="quote-wrap">
-                                    <p class="client-quote">
-                                        Lorem ipsum dolor sit amet adip elitions repellat tetur delni vel quam aliq
-                                        earum explibo dolor eme fugiat enim illumon.
-                                    </p>
-                                    <div class="client-info-wrap">
-                                        <div class="client-info">
-                                            <h5>Chris Jackson</h5>
-                                            <span>Enterpreneur</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <i class="flaticon-star"></i>
-                                            4.9
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card style1">
-                                <div class="client-img">
-                                    <img src="{{asset('assets2/img/clients/client-5.jpg')}}" alt="Image">
-                                </div>
-                                <div class="quote-wrap">
-                                    <p class="client-quote">
-                                        Lorem ipsum dolor sit amet adip elitions repellat tetur delni vel quam aliq
-                                        earum explibo dolor eme fugiat enim illumon.
-                                    </p>
-                                    <div class="client-info-wrap">
-                                        <div class="client-info">
-                                            <h5>Robert Muller</h5>
-                                            <span>MD, ITec</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <i class="flaticon-star"></i>
-                                            4.9
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="testimonial-card style1">
-                                <div class="client-img">
-                                    <img src="{{asset('assets2/img/clients/client-6.jpg')}}" alt="Image">
-                                </div>
-                                <div class="quote-wrap">
-                                    <p class="client-quote">
-                                        Lorem ipsum dolor sit amet adip elitions repellat tetur delni vel quam aliq
-                                        earum explibo dolor eme fugiat enim illumon.
-                                    </p>
-                                    <div class="client-info-wrap">
-                                        <div class="client-info">
-                                            <h5>Mark Owen</h5>
-                                            <span>Enterpreneur</span>
-                                        </div>
-                                        <div class="ratings">
-                                            <i class="flaticon-star"></i>
-                                            4.9
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-
+                <!-- Partners begins here -->
                 <div class="partner-wrap ptb-100">
                     <div class="container">
                         <div class="partner-slider owl-carousel">
-                            <div class="partner-item">
-                                <img src="assets/img/partner/partner-1.png" alt="Image">
+                            @forelse($partners as $partner)
+                                <div class="partner-item">
+                                <img src="{{asset('storage/'.$partner->image)}}" alt="Image">
                             </div>
-                            <div class="partner-item">
-                                <img src="assets/img/partner/partner-2.png" alt="Image">
-                            </div>
-                            <div class="partner-item">
-                                <img src="assets/img/partner/partner-3.png" alt="Image">
-                            </div>
-                            <div class="partner-item">
-                                <img src="assets/img/partner/partner-4.png" alt="Image">
-                            </div>
-                            <div class="partner-item">
-                                <img src="assets/img/partner/partner-5.png" alt="Image">
-                            </div>
-                            <div class="partner-item">
-                                <img src="assets/img/partner/partner-6.png" alt="Image">
-                            </div>
+                            @empty
+
+                            @endforelse
+                        
                         </div>
                     </div>
                 </div>
+            <!-- End Partners begins here -->
 
             </div>
 @endsection

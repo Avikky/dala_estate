@@ -7,6 +7,8 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        
+
         <link rel="stylesheet" href="{{asset('assets2/css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{asset('assets2/css/flaticon.css')}}">
         <link rel="stylesheet" href="{{asset('assets2/css/remixicon.css')}}">
@@ -19,8 +21,9 @@
         <link rel="stylesheet" href="{{asset('assets2/css/responsive.css')}}">
         <link rel="stylesheet" href="{{asset('assets2/css/dark-theme.css')}}">
         <title>@yield('pageTitle')- {{ $setting->sitename }}</title>
-        <link rel="icon" type="image/png" href="{{asset('assets2/img/favicon.png')}}">
-    </head>
+        
+        <link rel="shortcut icon" href="{{asset('/favicon.ico') }}" type="image/x-icon">
+        <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
     <body>
         <div class="loader js-preloader">
             <div></div>
@@ -181,10 +184,7 @@
                                         />
                                     </a>
                                     <p class="comp-desc">
-                                        Lorem ipsum dolor sit amet consec tetur
-                                        aditonsi soom isotope elit esumo tempo
-                                        incidunt labore dolore magna aliqu core
-                                        tetur adip iscing eliteous sedun amet.
+                                        {!! html_entity_decode(substr(strip_tags($setting->about) , 0, 150)) !!}...
                                     </p>
                                   
                                    

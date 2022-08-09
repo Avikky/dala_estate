@@ -27,7 +27,8 @@
                                     </span>
                                     <div class="contact-info">
                                         <h3>Visit Us Anytime</h3>
-                                        <p>342/A Brooklyn St, Milson Avenue, <br> New York, USA
+                                        <p>
+                                            {{$setting->address}}
                                         </p>
                                     </div>
                                 </div>
@@ -40,13 +41,12 @@
                                     <div class="contact-info">
                                         <h3>Send An Email</h3>
                                         <a
-                                            href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#0c64696060634c6a69606d226f6361"><span
-                                                class="__cf_email__"
-                                                data-cfemail="076f626b6b684761626b662964686a">[email&#160;protected]</span></a>
-                                        <a
-                                            href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#f1828481819e8385b197949d90df929e9c"><span
-                                                class="__cf_email__"
-                                                data-cfemail="65161015150a171125030009044b060a08">[email&#160;protected]</span></a>
+                                            href="#">
+                                            <span class="__cf_email__">
+                                                [{{$setting->email}}]
+
+                                            </span>
+                                            </a>
                                     </div>
                                 </div>
                             </div>
@@ -57,8 +57,7 @@
                                     </span>
                                     <div class="contact-info">
                                         <h3>Call Center</h3>
-                                        <a href="tel:88098787868">+44 587 154765</a>
-                                        <a href="tel:88098787869">+55 576 234532</a>
+                                        <a href="#">{{$setting->phone}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -76,22 +75,22 @@
                                     </div>
                                     <ul class="social-profile list-style style1">
                                         <li>
-                                            <a target="_blank" href="https://facebook.com/">
+                                            <a target="_blank" href="{{$setting->facebook}}">
                                                 <i class="ri-facebook-fill"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://twitter.com/">
+                                            <a target="_blank" href="{{$setting->twitter}}">
                                                 <i class="ri-twitter-fill"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://instagram.com/">
+                                            <a target="_blank" href="{{$setting->instagram}}">
                                                 <i class="ri-instagram-line"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a target="_blank" href="https://linkedin.com/">
+                                            <a target="_blank" href="{{$setting->linkedin}}">
                                                 <i class="ri-linkedin-fill"></i>
                                             </a>
                                         </li>
