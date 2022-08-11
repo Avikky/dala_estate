@@ -42,6 +42,8 @@ Route::get('/product', 'LiveController@product')->name('product');
 Route::get('/product/{slug}', 'LiveController@productview')->name('productview');
 Route::get('/blog', 'LiveController@blog')->name('blog');
 Route::get('/blog/{slug}', 'LiveController@blogview');
+Route::get('/viewproperty/{slug}', 'LiveController@viewproperty');
+Route::get('/allproperty/{slug}', 'LiveController@allproperty');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -152,7 +154,7 @@ Route::group(['prefix' => 'admin'], function(){
         Route::group(['prefix' => 'management'], function(){
             Route::get('/', 'ManagementController@index');
             Route::post('', 'ManagementController@create');
-            Route::put('{id}', 'ManagementController@update');
+            Route::put('{}', 'ManagementController@update');
             Route::delete('{id}', 'ManagementController@destroy');
         });
 
@@ -181,5 +183,24 @@ Route::group(['prefix' => 'admin'], function(){
     Route::group(['prefix' => 'contact'], function(){
         Route::get('/', 'ContactController@index');
         Route::post('/create', 'ContactController@store');
+    });
+
+    Route::group(['prefix' => 'property'], function(){
+        Route::get('/', 'PropertyController@index');
+        Route::get('/properties', 'PropertyController@allproperties');
+        Route::post('/create', 'PropertyController@store');
+        Route::get('/editproperty/{id}', 'PropertyController@editproperty');
+        Route::put('/update/{id}', 'PropertyController@update');
+         Route::delete('/{id}', 'PropertyController@destroy');
+    });
+
+    Route::group(['prefix' => 'propertycategory'], function(){
+        Route::get('/', 'PropertyCategoryController@index');
+        Route::post('/create', 'PropertyCategoryController@store');
+    });
+
+    Route::group(['prefix' => 'propertyuses'], function(){
+        Route::get('/', 'PropertyUsesController@index');
+        Route::post('/create', 'PropertyUsesController@store');
     });
 });

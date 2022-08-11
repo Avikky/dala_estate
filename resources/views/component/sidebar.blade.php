@@ -157,6 +157,45 @@
 
                   </ul>
               </li>
+               <li class="nav-item has-treeview">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fa fa-newspaper text-cyan"></i>
+                    <p>
+                      Property
+                      <i class="right fa fa-angle-left"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                      <a href="{{ url('/admin/property') }}" class="nav-link ml-3">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Create Property</p> 
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="{{ url('/admin/property/properties') }}" class="nav-link ml-3">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>All Property</p>
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="{{ url('/admin/propertycategory') }}" class="nav-link ml-3">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Property Category</p>
+                      </a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a href="{{ url('/admin/propertyuses') }}" class="nav-link ml-3">
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Property Usage</p>
+                      </a>
+                    </li>
+
+                  </ul>
+              </li>
 
               <li class="nav-item">
                 <a href="{{ url('/admin/slider') }}" class="nav-link">

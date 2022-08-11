@@ -11,6 +11,7 @@ use App\Setting;
 use App\Service;
 use App\Housing;
 use App\Faq;
+use App\Property;
 use App\Product;
 use App\Loan;
 use Auth;
@@ -42,6 +43,7 @@ class AppServiceProvider extends ServiceProvider
             // $view->with('allservices', Service::where('deleted_at', NULL)->get());
             $view->with('allservices', Service::where('deleted_at', NULL)->latest()->paginate(6));
             $view->with('housings', Housing::where('deleted_at', NULL)->get());
+            $view->with('properties', Property::with('propertycategory', 'propertyuses')->where('deleted_at', NULL)->get());
             $view->with('faqs', Faq::with('faqcat')->where('deleted_at', NULL)->get());
             $view->with('allproducts', Product::where('deleted_at', NULL)->get());
             $view->with('loancount', Loan::where('deleted_at', NULL)->where('status', 'Pending')->count());

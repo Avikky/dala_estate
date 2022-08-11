@@ -208,39 +208,39 @@
                     </div>
                 </div>
                 <div class="property-slider-three owl-carousel">
+                    @forelse($properties as $property)
+
                     <div class="property-card style5">
                         <div class="property-img">
                              <img
-                                src="{{ asset('assets2/img/property/property-10.jpg') }}"
+                                src="{{ asset('storage/'. $property->image) }}"
                                 alt="Image"
                             /> 
                         </div>
                         <div class="property-info">
                             <div class="property-status-wrap">
-                                <span class="property-status">For Rent</span>
-                                <p class="property-price">
-                                    $34,900/<span>month</span>
+                                <span class="property-status">{{ $property['propertyuses']->name}}</span>
+                                <p class="property-price">#{{ $property->maximum_price}}/
+                                    <span>month</span>
                                 </p>
                             </div>
                             <h3>
-                                <a href="listing-details.html"
-                                    >Villa In Luis Park</a
+                                <a href="{{url('viewproperty/details')}}"
+                                    >{{ $property->name}}</a
                                 >
                             </h3>
                             <p>
-                                <i class="flaticon-location"></i>64, 1st Aveneu,
-                                High Steet, USA
+                                <i class="flaticon-location"></i>{{ $property->location}}
                             </p>
-                            <ul class="property-metainfo list-style">
-                                <li><i class="flaticon-double-bed"></i>06</li>
-                                <li><i class="flaticon-bath-tub"></i>04</li>
-                                <li>
-                                    <i class="flaticon-square"></i>3100 sqft
-                                </li>
-                            </ul>
+                           
                         </div>
                     </div>
-                    <div class="property-card style5">
+                    @empty
+
+                    @endforelse
+
+                    
+                    <!-- <div class="property-card style5">
                         <div class="property-img">
                             <img
                                 src="{{asset('assets2/img/property/property-2.jpg')}}"
@@ -398,8 +398,9 @@
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
+                <a href="{{url('allproperty/more-properties')}}" style="margin-left:5em;" class="btn style1 mt-20">View More Property</a>
     </section>
 <!-- end properties -->
 

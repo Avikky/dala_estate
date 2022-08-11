@@ -14,6 +14,7 @@ use App\Partner;
 use App\Product;
 use App\Project;
 use App\Gallery;
+use App\Property;
 use App\Service;
 use App\Faq;
 use App\Management;
@@ -43,6 +44,7 @@ class LiveController extends Controller
         $faqs_dala1 = Faq::with('faqcat')->where('deleted_at', NULL)->where('faq_cats_id', 3)->get();
         $partners = Partner::where('deleted_at', NULL)->get();
         $testimonials = Testimonial::where('deleted_at', NULL)->get();
+        // $properties = Property::where('deleted_at', NULL)->get();
 
         // return $faqs_dala1;
 
@@ -69,6 +71,16 @@ class LiveController extends Controller
         $testimonials = Testimonial::where('deleted_at', NULL)->get();
         $partners = Partner::where('deleted_at', NULL)->get();
         return view('live.about', compact('testimonials', 'partners'));
+    }
+    
+    public function allproperty()
+    {
+        return view('live.allproperty');
+    }
+
+    public function viewproperty()
+    {
+        return view('live.viewproperty');
     }
 
     public function contact()
