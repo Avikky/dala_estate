@@ -10,7 +10,9 @@ class PropertyCategoryController extends Controller
 {
     public function index()
     {
-        return view('admin.propertycategory');
+        $propertycat = PropertyCategory::where('deleted_at', NULL)->get();
+        // return $propertycat;
+        return view('admin.propertycategory', compact('propertycat'));
     }
 
     public function store(Request $request)
@@ -31,5 +33,13 @@ class PropertyCategoryController extends Controller
         ]);
 
         return back()->with('success', 'Prperty Category created successfully');
+    }
+
+
+    public function destroy($id)
+    {
+        PropertyCategory::destroy($id);
+
+        return back()->with('success', 'Property Category deleted successfully!');
     }
 }

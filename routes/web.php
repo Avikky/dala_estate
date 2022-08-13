@@ -197,6 +197,7 @@ Route::group(['prefix' => 'admin'], function(){
     Route::group(['prefix' => 'propertycategory'], function(){
         Route::get('/', 'PropertyCategoryController@index');
         Route::post('/create', 'PropertyCategoryController@store');
+        Route::delete('delete/{id}', 'PropertyCategoryController@destroy')->name('del.property.category');
     });
 
     Route::group(['prefix' => 'propertyuses'], function(){

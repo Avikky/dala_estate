@@ -67,6 +67,7 @@
                 <table class="table table-hover" id="example2">
                     <thead>
                     <tr>
+                        <td>S/N</td>
                         <th>Title</th>
                         <th>Description</th>
                         <th>Slug</th>
@@ -74,7 +75,22 @@
                     </tr>
                     </thead>
                     <tbody>
+                        @forelse($propertycat as $category)
+                            <tr>
+                                <td>{{$loop->index + 1}}</td>
+                                <td>{{$category->name}}</td>
+                                <td>{{$category->description}}</td>
+                                <td>{{$category->slug}}</td>
+                               <td>
+                            <form action="{{route('del.property.category', ['id'=>$category->id])}}" method="POST">
+                              {{ csrf_field() }}
+                              {{ Method_field('DELETE') }}
+                               <button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                            </form>
+                            </tr>
+                        @empty
 
+                        @endforelse
                     
                     </tbody>
                 </table>
