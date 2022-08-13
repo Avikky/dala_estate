@@ -59,7 +59,7 @@
 
                               <div class="c-inputs-stacked">
                     
-                                <input type="checkbox" id="checkbox_{{ $category->id }}" name="category[]" value="{{ $category->id }}"/>
+                                <input type="radio" id="checkbox_{{ $category->id }}" name="category" value="{{ $category->id }}"/>
                                 <label for="checkbox_{{ $category->id}}" class="block"> {{ $category->title }}</label>  
                               </div>
 

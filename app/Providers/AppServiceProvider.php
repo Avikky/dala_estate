@@ -39,15 +39,20 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('*', function($view)
         {
+
+            
+
             $view->with('setting', Setting::find(1));
             // $view->with('allservices', Service::where('deleted_at', NULL)->get());
-            $view->with('allservices', Service::where('deleted_at', NULL)->latest()->paginate(6));
-            $view->with('housings', Housing::where('deleted_at', NULL)->get());
-            $view->with('properties', Property::with('propertycategory', 'propertyuses')->where('deleted_at', NULL)->get());
+            $view->with('allservices', Service::where('deleted_at', NULL)->latest()->get());
+            $view->with('housings', Property::whereHas('propertycategory', function ($query) {
+                return $query->where('name', '=', 'Housing');
+            })->get());
+            // $view->with('properties', Property::with('propertycategory', 'propertyuses')->where('deleted_at', NULL)->get());
             $view->with('faqs', Faq::with('faqcat')->where('deleted_at', NULL)->get());
-            $view->with('allproducts', Product::where('deleted_at', NULL)->get());
-            $view->with('loancount', Loan::where('deleted_at', NULL)->where('status', 'Pending')->count());
-            $view->with('randproducts', Product::where('deleted_at', NULL)->inRandomOrder()->limit(4)->get());
+            // $view->with('allproducts', Product::where('deleted_at', NULL)->get());
+            // $view->with('loancount', Loan::where('deleted_at', NULL)->where('status', 'Pending')->count());
+            // $view->with('randproducts', Product::where('deleted_at', NULL)->inRandomOrder()->limit(4)->get());
         });
     }
 }

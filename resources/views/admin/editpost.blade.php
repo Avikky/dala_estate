@@ -61,12 +61,16 @@
                             @forelse($categories as $category)
                               @if(in_array($category->id, $avail_cat)) 
                                 <div class="c-inputs-stacked">
-                                  <input type="checkbox" id="checkbox_{{ $category->id }}" name="category[]" value="{{ $category->id }}" checked />
+                                  @if($loop == 0)
+                                  <input type="radio" id="checkbox_{{ $category->id }}" name="category" value="{{ $category->id }}" checked required />
+                                  @else
+                                   <input type="radio" id="checkbox_{{ $category->id }}" name="category" value="{{ $category->id }}" checked />
+                                  @endif
                                   <label for="checkbox_{{ $category->id}}" class="block"> {{ $category->title }}</label> 
                                 </div>
                               @else
                                 <div class="c-inputs-stacked">
-                                  <input type="checkbox" id="checkbox_{{ $category->id }}" name="category[]" value="{{ $category->id }}"/>
+                                  <input type="radio" id="checkbox_{{ $category->id }}" name="category" value="{{ $category->id }}" required/>
                                   <label for="checkbox_{{ $category->id}}" class="block"> {{ $category->title }}</label> 
                                 </div>
                               @endif 

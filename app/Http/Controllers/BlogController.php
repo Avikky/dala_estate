@@ -43,6 +43,7 @@ class BlogController extends Controller
     {
         $categories = Category::where('deleted_at', NULL)->get();
         $tags = Tag::where('deleted_at', NULL)->get();
+
         return view('admin.newpost', compact('categories', 'tags'));
     }
     
@@ -57,6 +58,8 @@ class BlogController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string|max:255',
+            'description' => 'required',
+            'category' => 'required',
             'featured_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]); 
 
@@ -73,6 +76,8 @@ class BlogController extends Controller
             'title' => $request['title'],
             'description' => $request['description'],
             'slug' => $slug,
+            'category' => $request->category,
+            'author' => Auth::user()->name,
             'featured_image' => $image
         ]);
         $post->Categories()->attach($request->category);
@@ -116,6 +121,8 @@ class BlogController extends Controller
     {
         $this->validate($request, [
             'title' => 'required|string|max:255',
+            'description' => 'required',
+            'category' => 'required',
             'featured_image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]); 
 
@@ -133,29 +140,13 @@ class BlogController extends Controller
             'title' => $request['title'],
             'description' => $request['description'],
             'slug' => $slug,
+            'author' => Auth::user()->name,
+            'category' => $request->category,
             'featured_image' => $image
         ]);
 
 
-        $remove_category = DB::table('category_post')->where('post_id', $id)->pluck('category_id')->toArray();
-   
-        foreach ($request->category as $value) {
-            if (in_array($value, $remove_category)) {
-                
-            }
-            else{
-               $post->Categories()->attach($value);
-            }        
-        }
-
-        foreach ($remove_category as $value) {
-            if (in_array($value, $request->category)) {
-                # code...
-            }
-            else{
-                $post->Categories()->detach($value);
-            }
-        }
+      
         return redirect()->back()->with('success', 'Post successful updated!');
     }
 

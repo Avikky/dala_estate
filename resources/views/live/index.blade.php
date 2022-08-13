@@ -32,166 +32,168 @@
 
 <!-- building preview -->
      <section class="city-wrap style3 ptb-100">
-                <img
-                    src="{{asset('assets2/img/city/city-shape-2.png')}}"
-                    alt="Image"
-                    class="city-shape-two"
-                />
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
-                            <div class="section-title style2 text-center mb-40">
-                                <span>CHOOSE FROM OUR DIFFERENT Property Category</span>
-                                <h2>Our Hottest Most Sort out Properties</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="city-slider-two owl-carousel">
-                        @foreach($galleries as $gallery)
-                            <div class="city-card style3">
-                                <img
-                                    src="{{asset('storage/'. $gallery->file_path)}}"
-                                    alt="Image"
-                                />
-                                <p>Best sales</p>
-                                <h3>
-                                    <a href="{{route('gallery')}}">{{$gallery->name}}</a>
-                                </h3>
-                                <p>{{$gallery->description}}</p>
-                            </div>
-                        @endforeach
+        <img
+            src="{{asset('assets2/img/city/city-shape-2.png')}}"
+            alt="Image"
+            class="city-shape-two"
+        />
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 offset-xl-3 col-lg-8 offset-lg-2">
+                    <div class="section-title style2 text-center mb-40">
+                        <span>CHOOSE FROM OUR DIFFERENT Property Category</span>
+                        <h2>Our Hottest Most Sort out Properties</h2>
                     </div>
                 </div>
+            </div>
+            <div class="city-slider-two owl-carousel">
+                @foreach($galleries as $gallery)
+                    <div class="city-card style3">
+                        <img
+                            src="{{asset('storage/'. $gallery->file_path)}}"
+                            alt="Image"
+                        />
+                        <p>Best sales</p>
+                        <h3>
+                            <a href="{{route('gallery')}}">{{$gallery->name}}</a>
+                        </h3>
+                        <a href="{{route('gallery')}}">
+                            <p>{{$gallery->description}}</p>
+                        </a>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </section>
 <!-- end building preview -->
 <!-- About -->
      <section class="about-wrap style2 pt-100 bg-seashell">
-                <div class="container">
-                    <div class="about-box">
-                        <img
-                            src="assets/img/about/about-shape-3.png"
-                            alt="Image"
-                            class="about-shape-three"
-                        />
-                        <div class="row gx-5 align-items-center">
-                            <div
-                                class="col-lg-6"
-                                data-aos="fade-right"
-                                data-aos-duration="1200"
-                                data-aos-delay="200"
-                            >
-                                <div
-                                    class="about-img-wrap about-bg-1 bg-f"
-                                ></div>
-                            </div>
-                            <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
-                          
-                                <div class="about-content">
-                                    <div class="content-title style2">
-                                      <h3>  <span>ABOUT US</span></h3>
-                                        <!-- <h4>
-                                            Enjoy Our Property For A Weekend
-                                            Longer Stay
-                                         
-                                        </h4> -->
-                                        <p>
-                                            {!! html_entity_decode(substr(strip_tags($setting->about) , 0, 150)) !!}
+        <div class="container">
+            <div class="about-box">
+                <img
+                    src="assets/img/about/about-shape-3.png"
+                    alt="Image"
+                    class="about-shape-three"
+                />
+                <div class="row gx-5 align-items-center">
+                    <div
+                        class="col-lg-6"
+                        data-aos="fade-right"
+                        data-aos-duration="1200"
+                        data-aos-delay="200"
+                    >
+                        <div
+                            class="about-img-wrap about-bg-1 bg-f"
+                        ></div>
+                    </div>
+                    <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+                    
+                        <div class="about-content">
+                            <div class="content-title style2">
+                                <h3>  <span>ABOUT US</span></h3>
+                                <!-- <h4>
+                                    Enjoy Our Property For A Weekend
+                                    Longer Stay
+                                    
+                                </h4> -->
+                                <p>
+                                    {!! html_entity_decode(substr(strip_tags($setting->about) , 0, 150)) !!}
 
-                                        </p>
-                                    </div> 
-                                    <h5>OUR CORE VALUES ARE</h5>
-                                    <ul class="content-feature-list list-style">
-                                        <li>
-                                            <i class="flaticon-checked"></i>INTEGRITY</li>
-                                        <li>
-                                            <i class="flaticon-checked"></i>COMPETENCE</li>
-                                        <li>
-                                            <i class="flaticon-checked"></i
-                                            >CREDIBILITY</li>
-                                        <li>
-                                            <i class="flaticon-checked"></i
-                                            >TEAM WORK</li>
-                                        <li>
-                                            <i class="flaticon-checked"></i
-                                            >PROMPT DELIVERY</li>
-                                        <li>
-                                            <i class="flaticon-checked"></i
-                                            >QUALITY CLIENT / CUSTOMER SERVICE</li>
-                                    </ul>
-                                    <a href="{{route('about')}}" class="btn style2"
-                                        >Learn More</a
-                                    >
-                                </div>
-                            </div>
+                                </p>
+                            </div> 
+                            <h5>OUR CORE VALUES ARE</h5>
+                            <ul class="content-feature-list list-style">
+                                <li>
+                                    <i class="flaticon-checked"></i>INTEGRITY</li>
+                                <li>
+                                    <i class="flaticon-checked"></i>COMPETENCE</li>
+                                <li>
+                                    <i class="flaticon-checked"></i
+                                    >CREDIBILITY</li>
+                                <li>
+                                    <i class="flaticon-checked"></i
+                                    >TEAM WORK</li>
+                                <li>
+                                    <i class="flaticon-checked"></i
+                                    >PROMPT DELIVERY</li>
+                                <li>
+                                    <i class="flaticon-checked"></i
+                                    >QUALITY CLIENT / CUSTOMER SERVICE</li>
+                            </ul>
+                            <a href="{{route('about')}}" class="btn style2"
+                                >Learn More</a
+                            >
                         </div>
                     </div>
                 </div>
-                <div class="counter-area pt-100 pb-75">
-                    <div class="container">
-                        <div class="counter-card-wrap style3">
-                            <div class="counter-card">
-                                <span class="counter-icon">
-                                    <i class="flaticon-quality-control"></i>
-                                </span>
-                                <div class="counter-text">
-                                    <h2 class="counter-num">
-                                        <span
-                                            class="odometer"
-                                            data-count="12"
-                                        ></span>
-                                        <span class="target">+</span>
-                                    </h2>
-                                    <p>Years Of Experience</p>
-                                </div>
-                            </div>
-                            <div class="counter-card">
-                                <span class="counter-icon">
-                                    <i class="flaticon-apartment"></i>
-                                </span>
-                                <div class="counter-text">
-                                    <h2 class="counter-num">
-                                        <span
-                                            class="odometer"
-                                            data-count="167"
-                                        ></span>
-                                        <span class="target">K+</span>
-                                    </h2>
-                                    <p>Apartments Rent</p>
-                                </div>
-                            </div>
-                            <div class="counter-card">
-                                <span class="counter-icon">
-                                    <i class="flaticon-office-building"></i>
-                                </span>
-                                <div class="counter-text">
-                                    <h2 class="counter-num">
-                                        <span
-                                            class="odometer"
-                                            data-count="239"
-                                        ></span>
-                                        <span class="target">+</span>
-                                    </h2>
-                                    <p>Total Constructions</p>
-                                </div>
-                            </div>
-                            <div class="counter-card">
-                                <span class="counter-icon">
-                                    <i class="flaticon-hand-gesture"></i>
-                                </span>
-                                <div class="counter-text">
-                                    <h2 class="counter-num">
-                                        <span
-                                            class="odometer"
-                                            data-count="449"
-                                        ></span>
-                                        <span class="target">+</span>
-                                    </h2>
-                                    <p>Apartio Rooms</p>
-                                </div>
-                            </div>
+            </div>
+        </div>
+        <div class="counter-area pt-100 pb-75">
+            <div class="container">
+                <div class="counter-card-wrap style3">
+                    <div class="counter-card">
+                        <span class="counter-icon">
+                            <i class="flaticon-quality-control"></i>
+                        </span>
+                        <div class="counter-text">
+                            <h2 class="counter-num">
+                                <span
+                                    class="odometer"
+                                    data-count="12"
+                                ></span>
+                                <span class="target">+</span>
+                            </h2>
+                            <p>Years Of Experience</p>
+                        </div>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-icon">
+                            <i class="flaticon-apartment"></i>
+                        </span>
+                        <div class="counter-text">
+                            <h2 class="counter-num">
+                                <span
+                                    class="odometer"
+                                    data-count="167"
+                                ></span>
+                                <span class="target">K+</span>
+                            </h2>
+                            <p>Apartments Rent</p>
+                        </div>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-icon">
+                            <i class="flaticon-office-building"></i>
+                        </span>
+                        <div class="counter-text">
+                            <h2 class="counter-num">
+                                <span
+                                    class="odometer"
+                                    data-count="239"
+                                ></span>
+                                <span class="target">+</span>
+                            </h2>
+                            <p>Total Constructions</p>
+                        </div>
+                    </div>
+                    <div class="counter-card">
+                        <span class="counter-icon">
+                            <i class="flaticon-hand-gesture"></i>
+                        </span>
+                        <div class="counter-text">
+                            <h2 class="counter-num">
+                                <span
+                                    class="odometer"
+                                    data-count="449"
+                                ></span>
+                                <span class="target">+</span>
+                            </h2>
+                            <p>Apartio Rooms</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
     </section>
 <!--End About -->
 
@@ -219,15 +221,19 @@
                         </div>
                         <div class="property-info">
                             <div class="property-status-wrap">
+                                <span class="property-status">{{ $property['propertycategory']->name}}</span>
+                                <span>For</span>
                                 <span class="property-status">{{ $property['propertyuses']->name}}</span>
-                                <p class="property-price">#{{ $property->maximum_price}}/
-                                    <span>month</span>
-                                </p>
-                            </div>
+                            <p class="property-price">
+                            <span class="text-primary">&#8358;</span>
+                            {{ $property->maximum_price}}/
+                                <span>month</span>
+                            </p>
+                        </div>
                             <h3>
-                                <a href="{{url('viewproperty/details')}}"
-                                    >{{ $property->name}}</a
-                                >
+                                  <a href="{{route('singleProperty', ['slug'=>$property->slug])}}"
+                                                    >{{ $property->name}}</a
+                                                >
                             </h3>
                             <p>
                                 <i class="flaticon-location"></i>{{ $property->location}}
@@ -239,168 +245,10 @@
 
                     @endforelse
 
-                    
-                    <!-- <div class="property-card style5">
-                        <div class="property-img">
-                            <img
-                                src="{{asset('assets2/img/property/property-2.jpg')}}"
-
-                                alt="Image"
-                            />
-                        </div>
-                        <div class="property-info">
-                            <div class="property-status-wrap">
-                                <span class="property-status">For Sale</span>
-                                <p class="property-price">$21,400</p>
-                            </div>
-                            <h3>
-                                <a href="listing-details.html"
-                                    >Modern Apartment</a
-                                >
-                            </h3>
-                            <p>
-                                <i class="flaticon-location"></i>123/A, Miles
-                                Ave, North Steet, USA
-                            </p>
-                            <ul class="property-metainfo list-style">
-                                <li><i class="flaticon-double-bed"></i>05</li>
-                                <li><i class="flaticon-bath-tub"></i>03</li>
-                                <li>
-                                    <i class="flaticon-square"></i>2500 sqft
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="property-card style5">
-                        <div class="property-img">
-                            <img
-                                src="{{asset('assets2/img/property/property-3.jpg')}}"
-
-                                alt="Image"
-                            />
-                        </div>
-                        <div class="property-info">
-                            <div class="property-status-wrap">
-                                <span class="property-status">For Rent</span>
-                                <p class="property-price">
-                                    $44,900/<span>month</span>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="listing-details.html"
-                                    >Apartment For Rent</a
-                                >
-                            </h3>
-                            <p>
-                                <i class="flaticon-location"></i>732 Burwell
-                                Heights Road, Houston
-                            </p>
-                            <ul class="property-metainfo list-style">
-                                <li><i class="flaticon-double-bed"></i>07</li>
-                                <li><i class="flaticon-bath-tub"></i>04</li>
-                                <li>
-                                    <i class="flaticon-square"></i>4110 sqft
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="property-card style5">
-                        <div class="property-img">
-                            <img
-                                src="{{asset('assets2/img/property/property-4.jpg')}}"
-
-                                alt="Image"
-                            />
-                        </div>
-                        <div class="property-info">
-                            <div class="property-status-wrap">
-                                <span class="property-status">For Rent</span>
-                                <p class="property-price">
-                                    $25,900/<span>month</span>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="listing-details.html"
-                                    >Dreamy Penthouse</a
-                                >
-                            </h3>
-                            <p>
-                                <i class="flaticon-location"></i>4890 Grey Fox
-                                Fam Road, Houston
-                            </p>
-                            <ul class="property-metainfo list-style">
-                                <li><i class="flaticon-double-bed"></i>05</li>
-                                <li><i class="flaticon-bath-tub"></i>02</li>
-                                <li>
-                                    <i class="flaticon-square"></i>2210 sqft
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="property-card style5">
-                        <div class="property-img">
-                            <img
-                                src="{{asset('assets2/img/property/property-5.jpg')}}"
-
-                                alt="Image"
-                            />
-                        </div>
-                        <div class="property-info">
-                            <div class="property-status-wrap">
-                                <span class="property-status">For Rent</span>
-                                <p class="property-price">
-                                    $34,900/<span>month</span>
-                                </p>
-                            </div>
-                            <h3>
-                                <a href="listing-details.html"
-                                    >Luxury Apartment</a
-                                >
-                            </h3>
-                            <p>
-                                <i class="flaticon-location"></i>2665 Blair
-                                Court, Dalton, Missouri
-                            </p>
-                            <ul class="property-metainfo list-style">
-                                <li><i class="flaticon-double-bed"></i>04</li>
-                                <li><i class="flaticon-bath-tub"></i>02</li>
-                                <li>
-                                    <i class="flaticon-square"></i>2800 sqft
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="property-card style5">
-                        <div class="property-img">
-                            <img
-                                src="{{asset('assets2/img/property/property-6.jpg')}}"
-
-                                alt="Image"
-                            />
-                        </div>
-                        <div class="property-info">
-                            <div class="property-status-wrap">
-                                <span class="property-status">For Sale</span>
-                                <p class="property-price">$44,000</p>
-                            </div>
-                            <h3>
-                                <a href="listing-details.html">Flat For Sale</a>
-                            </h3>
-                            <p>
-                                <i class="flaticon-location"></i>1849 Woodbridge
-                                Lane, Michigan
-                            </p>
-                            <ul class="property-metainfo list-style">
-                                <li><i class="flaticon-double-bed"></i>06</li>
-                                <li><i class="flaticon-bath-tub"></i>05</li>
-                                <li>
-                                    <i class="flaticon-square"></i>4000 sqft
-                                </li>
-                            </ul>
-                        </div>
-                    </div> -->
                 </div>
-                <a href="{{url('allproperty/more-properties')}}" style="margin-left:5em;" class="btn style1 mt-20">View More Property</a>
+                <div class="d-flex justify-content-center">
+                    <a href="{{url('allproperty/more-properties')}}" style="margin-left:5em;" class="btn style1 mt-20">View More Property</a>
+                </div>
     </section>
 <!-- end properties -->
 

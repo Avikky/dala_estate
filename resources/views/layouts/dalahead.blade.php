@@ -78,27 +78,11 @@
                                     <ul class="dropdown-menu">
                                         @foreach($allservices as $service)
                                         <li class="nav-item">
-                                            <a
-                                                href="{{ route('service') }}/{{ $service->slug }}"
-                                                class="nav-link"
-                                                >{{$service->name}}
+                                            <a href="{{ route('serviceview',['slug' => $service->slug ]) }}"class="nav-link">
+                                                {{$service->name}}
                                             </a>
                                         </li>
                                         @endforeach
-                                        <!-- <li class="nav-item">
-                                            <a
-                                                href="listings-two.html"
-                                                class="nav-link"
-                                                >Listing Style Two
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a
-                                                href="listing-details.html"
-                                                class="nav-link"
-                                                >Single Listings</a
-                                            >
-                                        </li> -->
                                     </ul>
                                 </li>
                                 <li class="nav-item">
@@ -106,7 +90,7 @@
                                          <ul class="dropdown-menu">                                        
                                        @foreach($housings as $housing)
                                              <li class="nav-item">
-                                            <a href="{{route('housing')}}/{{$housing->slug}}" class="nav-link">{{$housing->name}}</a>
+                                            <a href="{{route('housingview', ['slug'=>$housing->slug])}}" class="nav-link">{{$housing->name}}</a>
                                             
                                         </li>
                                         

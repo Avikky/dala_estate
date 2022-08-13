@@ -18,6 +18,7 @@ use App\Property;
 use App\Service;
 use App\Faq;
 use App\Management;
+use App\RequestBooking;
 use App\Testimonial;
 use Illuminate\Http\File;
 use Illuminate\Http\Request;
@@ -33,24 +34,22 @@ class LiveController extends Controller
      */
     public function index()
     {
-        //$firstslider = Slider::where('deleted_at', NULL)->first();
-        //$sliders = Slider::where('deleted_at', NULL)->where('id', '!=', $firstslider->id)->get();
 
-        $sliders = Slider::where('deleted_at', NULL)->get();
-        $services = Service::where('deleted_at', NULL)->get();
+        $sliders = Slider::where('deleted_at', NULL)->latest()->get();
+        $allservices = Service::where('deleted_at', NULL)->latest()->get();
         $posts = Post::where('deleted_at', NULL)->latest()->take(3)->get();
         $housings = Housing::where('deleted_at', NULL)->limit(6)->get();
-        $galleries = Gallery::where('deleted_at', NULL)->latest()->take(6)->get();
+        $galleries = Gallery::where('deleted_at', NULL)->latest()->take(6)->inRandomOrder()->get();
         $faqs_dala1 = Faq::with('faqcat')->where('deleted_at', NULL)->where('faq_cats_id', 3)->get();
         $partners = Partner::where('deleted_at', NULL)->get();
         $testimonials = Testimonial::where('deleted_at', NULL)->get();
-        // $properties = Property::where('deleted_at', NULL)->get();
+        $properties = Property::where('deleted_at', NULL)->with('propertycategory', 'propertyuses')->inRandomOrder()->get();
 
         // return $faqs_dala1;
 
         // $products = Product::where('deleted_at', NULL)->limit(6)->get();
         
-        return view('live.index', compact('sliders', 'services', 'housings', 'posts', 'galleries', 'faqs_dala1', 'partners', 'testimonials'));
+        return view('live.index', compact('sliders', 'allservices', 'housings', 'posts', 'galleries', 'faqs_dala1', 'partners', 'testimonials', 'properties'));
     }
 
     public function gallery()
@@ -70,17 +69,25 @@ class LiveController extends Controller
     {
         $testimonials = Testimonial::where('deleted_at', NULL)->get();
         $partners = Partner::where('deleted_at', NULL)->get();
-        return view('live.about', compact('testimonials', 'partners'));
+        $allservices = Service::where('deleted_at', NULL)->latest()->get();
+        $housings = Housing::where('deleted_at', NULL)->limit(6)->get();
+        return view('live.about', compact('testimonials', 'partners', 'allservices', 'housings'));
     }
     
     public function allproperty()
     {
-        return view('live.allproperty');
+        $properties = Property::where('deleted_at', NULL)->with('propertycategory', 'propertyuses')->latest()->paginate(15);
+
+        return view('live.allproperty', compact('properties'));
     }
 
-    public function viewproperty()
+    public function viewproperty($slug)
     {
-        return view('live.viewproperty');
+        $property = Property::where('deleted_at', NULL)->where('slug', $slug)->with('propertycategory', 'propertyuses')->first();
+
+        $properties = Property::where('deleted_at', NULL)->with('propertycategory', 'propertyuses')->latest()->get();
+
+        return view('live.viewproperty', compact('properties', 'property'));
     }
 
     public function contact()
@@ -108,7 +115,8 @@ class LiveController extends Controller
         $post = Post::with('categories')->where('deleted_at', NULL)
                     ->where('slug', $slug)
                     ->first();
-        return view('live.blogview', compact('post'));
+        $properties = Property::where('deleted_at', NULL)->latest()->get();
+        return view('live.blogview', compact('post', 'properties'));
     }
 
     // public function product()
@@ -125,8 +133,13 @@ class LiveController extends Controller
 
     public function housingview($slug)
     {
-        $housing = Housing::where('deleted_at', NULL)->where('slug', $slug)->first();
-        return view('live.housingview', compact('housing'));
+        $housing = Property::whereHas('propertycategory', function ($query) {
+            return $query->where('name', '=', 'Housing');
+        })->first();
+
+        $properties = Property::where('deleted_at', NULL)->latest()->get();
+        
+        return view('live.housingview', compact('housing', 'properties'));
     }
 
     public function productview($slug)
@@ -159,16 +172,52 @@ class LiveController extends Controller
         return view('live.managementview', compact('management'));
     }
 
-    public function service()
+    public function service($id)
     {
-        $services = Service::where('deleted_at', NULL)->latest()->paginate(6);
+        $services = Service::find($id);
         return view('live.service', compact('services'));
     }
 
     public function serviceview($slug)
     {
+        $properties = Property::where('deleted_at', NULL)->latest()->get();
         $service = Service::where('deleted_at', NULL)->where('slug', $slug)->first();
-        return view('live.serviceview', compact('service'));
+        return view('live.serviceview', compact('service', 'properties'));
+    }
+
+    public function requestBooking(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'property' => 'required',
+            'booking_msg' => 'nullable',
+        ]);
+        
+        RequestBooking::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'property' => $request->property,
+            'message' => $request->booking_msg,
+        ]);
+
+        return back()->with('success', 'Your request has been submitted, we will give you a call');
+    }
+
+    public function listBookings(Request $request)
+    {
+        $bookings = RequestBooking::where('deleted_at', null)->latest()->get();
+
+        return view('admin.bookings', compact('bookings'));
+    }
+
+    public function deleteBooking($id)
+    {
+        RequestBooking::destroy($id);
+
+        return back()->with('success', 'booking request deleted');
     }
 
     public function portfolio(Request $request)
@@ -208,9 +257,9 @@ class LiveController extends Controller
             'message' => $request->message,
         );
         
-        Mail::send('emails.getmail', $data, function($message) use ($email) {
-            $message->to($email)->subject('New Quotation Notification');
-        });
+        // Mail::send('emails.getmail', $data, function($message) use ($email) {
+        //     $message->to($email)->subject('New Quotation Notification');
+        // });
 
         return redirect()->back()->with('success', 'Thank you for getting in touch, we will contact you soon!');
     }
@@ -240,62 +289,62 @@ class LiveController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeloan(Request $request)
-    {
-        $this->validate($request, [
-            'firstname' => 'required',
-            'lastname' => 'required',
-            'middlename' => 'required',
-            'email' => 'required',
-            'amount' => 'required',
-            'phone' => 'required',
-            'address' => 'required',
-            'dob' => 'required',
-            'gender' => 'required',
-            'bvn' => 'required',
-            'nature' => 'required',
-            'purpose' => 'required',
-            'location' => 'required',
-            'experience' => 'required',
-            'id_card' => 'required|mimes:png,jpeg,jpg',
-            'photo' => 'required|mimes:png,jpeg,jpg',
-        ]);
+    // public function storeloan(Request $request)
+    // {
+    //     $this->validate($request, [
+    //         'firstname' => 'required',
+    //         'lastname' => 'required',
+    //         'middlename' => 'required',
+    //         'email' => 'required',
+    //         'amount' => 'required',
+    //         'phone' => 'required',
+    //         'address' => 'required',
+    //         'dob' => 'required',
+    //         'gender' => 'required',
+    //         'bvn' => 'required',
+    //         'nature' => 'required',
+    //         'purpose' => 'required',
+    //         'location' => 'required',
+    //         'experience' => 'required',
+    //         'id_card' => 'required|mimes:png,jpeg,jpg',
+    //         'photo' => 'required|mimes:png,jpeg,jpg',
+    //     ]);
         
-        if ($request->file('photo')) {
-            $file = $request->file('photo');
-            $photo = Storage::disk('public')->putFile('photo', $file);
-        } 
+    //     if ($request->file('photo')) {
+    //         $file = $request->file('photo');
+    //         $photo = Storage::disk('public')->putFile('photo', $file);
+    //     } 
 
-        if ($request->file('id_card')) {
-            $file1 = $request->file('id_card');
-            $id_card = Storage::disk('public')->putFile('id_card', $file1);
-        } 
+    //     if ($request->file('id_card')) {
+    //         $file1 = $request->file('id_card');
+    //         $id_card = Storage::disk('public')->putFile('id_card', $file1);
+    //     } 
 
-        Loan::create([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'middlename' => $request->middlename,
-            'amount' => $request->amount,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'address' => $request->address,
-            'photo' => $photo,
-            'id_card' => $id_card,
-            'dob' => $request->dob,
-            'gender' => $request->gender,
-            'bvn' => $request->bvn,
-            'interest' => $request->interest,
-            'purpose' => $request->purpose,
-            'nature' => $request->nature,
-            'location' => $request->location,
-            'experience' => $request->experience,
-            'repayment' => $request->repayment,
-            'security' => $request->security,
-            'status' => "Pending",
-        ]);
+    //     Loan::create([
+    //         'firstname' => $request->firstname,
+    //         'lastname' => $request->lastname,
+    //         'middlename' => $request->middlename,
+    //         'amount' => $request->amount,
+    //         'email' => $request->email,
+    //         'phone' => $request->phone,
+    //         'address' => $request->address,
+    //         'photo' => $photo,
+    //         'id_card' => $id_card,
+    //         'dob' => $request->dob,
+    //         'gender' => $request->gender,
+    //         'bvn' => $request->bvn,
+    //         'interest' => $request->interest,
+    //         'purpose' => $request->purpose,
+    //         'nature' => $request->nature,
+    //         'location' => $request->location,
+    //         'experience' => $request->experience,
+    //         'repayment' => $request->repayment,
+    //         'security' => $request->security,
+    //         'status' => "Pending",
+    //     ]);
 
-        return redirect()->back()->with('success', 'Loan application successful recieved, the bank will soon contact you!');
-    }
+    //     return redirect()->back()->with('success', 'Loan application successful recieved, the bank will soon contact you!');
+    // }
 
     /**
      * Display the specified resource.

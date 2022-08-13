@@ -11,7 +11,8 @@
         <div class="sidebar">
           <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-              <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+              <i class="fas fa-user-circle text-white fa-2x"></i>
+              {{-- <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image"> --}}
             </div>
             <div class="info">
               <span class="p-1 text-white">
@@ -32,25 +33,31 @@
                   </p>
                 </a>
               </li>
+               <li class="nav-item">
+                <a href="{{ url('/admin/slider') }}" class="nav-link">
+                  <i class="nav-icon fa fa-image text-blue"></i>
+                  <p>Sliders</p>
+                </a>
+              </li>
               <li class="nav-item">
                 <a href="{{ url('/admin/services') }}" class="nav-link">
-                  <i class="nav-icon fa fa-product-hunt text-yellow"></i>
+                  <i class="nav-icon fa fa-star text-yellow"></i>
                   <p>Services</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('g.index') }}" class="nav-link">
-                  <i class="nav-icon fa fa-product-hunt text-yellow"></i>
+                  <i class="nav-icon fa fa-images text-yellow"></i>
                   <p>Gallery uploads</p>
                 </a>
               </li>
 
-              <li class="nav-item">
+              {{-- <li class="nav-item">
                 <a href="{{ url('/admin/housing') }}" class="nav-link">
                   <i class="nav-icon fa fa-bell text-purple"></i>
                   <p>Housing</p>
                 </a>
-              </li>
+              </li> --}}
 
               <!-- <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
@@ -198,13 +205,6 @@
               </li>
 
               <li class="nav-item">
-                <a href="{{ url('/admin/slider') }}" class="nav-link">
-                  <i class="nav-icon fa fa-gear text-blue"></i>
-                  <p>Sliders</p>
-                </a>
-              </li>
-
-              <li class="nav-item">
                 <a href="{{ url('/admin/team') }}" class="nav-link">
                   <i class="nav-icon fa fa-user text-indigo"></i>
                   <p>Team</p>
@@ -224,18 +224,25 @@
                   <p>Partners</p>
                 </a>
               </li> 
-
+{{-- 
               <li class="nav-item">
                 <a href="{{ url('/admin/messages') }}" class="nav-link">
                   <i class="nav-icon fa fa-envelope-o text-seal"></i>
                   <p>Messages</p>
                 </a>
+              </li> --}}
+
+              <li class="nav-item">
+                <a href="{{ route('list.bookings') }}" class="nav-link">
+                  <i class="nav-icon fa fa-envelope text-green"></i>
+                  <p>Booking request</p><span class="badge badge-info badge-sm float-right"></span>
+                </a>
               </li>
 
               <li class="nav-item">
                 <a href="{{ url('/admin/contact') }}" class="nav-link">
-                  <i class="nav-icon fa fa-contact text-green"></i>
-                  <p>Contact</p><span class="badge badge-info badge-sm float-right"></span>
+                  <i class="nav-icon fa fa-hands text-green"></i>
+                  <p>Contact messages</p><span class="badge badge-info badge-sm float-right"></span>
                 </a>
               </li>
 

@@ -41,9 +41,14 @@ Route::get('/contact', 'LiveController@contact')->name('contact');
 Route::get('/product', 'LiveController@product')->name('product');
 Route::get('/product/{slug}', 'LiveController@productview')->name('productview');
 Route::get('/blog', 'LiveController@blog')->name('blog');
-Route::get('/blog/{slug}', 'LiveController@blogview');
-Route::get('/viewproperty/{slug}', 'LiveController@viewproperty');
+Route::get('/blog/{slug}', 'LiveController@blogview')->name('blogpost');
+Route::get('/viewproperty/{slug}', 'LiveController@viewproperty')->name('singleProperty');
 Route::get('/allproperty/{slug}', 'LiveController@allproperty');
+
+Route::get('/admin/bookings', 'LiveController@listBookings')->name('list.bookings');
+Route::post('/bookings', 'LiveController@requestBooking')->name('bookings');
+Route::post('/delete/{id}', 'LiveController@deleteBooking')->name('delete.bookings');
+
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
@@ -183,6 +188,11 @@ Route::group(['prefix' => 'admin'], function(){
     Route::group(['prefix' => 'contact'], function(){
         Route::get('/', 'ContactController@index');
         Route::post('/create', 'ContactController@store');
+        Route::post('/delete/{id}', 'ContactController@delete')->name('delete.request');
+    });
+
+    Route::group(['prefix' => 'booking'], function(){
+        Route::post('/delete/{id}', 'ContactController@delete')->name('delete.booking');
     });
 
     Route::group(['prefix' => 'property'], function(){

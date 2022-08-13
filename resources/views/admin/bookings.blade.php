@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('pageTitle', 'Contact')
+@section('pageTitle', 'Booking Requests')
 @section('content')
 
     <div class="content">
@@ -26,7 +26,7 @@
                         @endif
                         <div class="card-body">
                             <div class="p-3">
-                                <h4>Contact Request</h4>
+                                <h4>Booking Request</h4>
                             </div>
 
                             <div class="table-responsive p-2">
@@ -36,35 +36,37 @@
                                         @if(isset($property_set))<th>Property ID</th>@endif
                                         <th>S/N</th>
                                         <th>Name</th>
+                                        <th>Phone.NO</th>
                                         <th>Email</th>
-                                        <th>Subject</th>
+                                        <th>Interested in</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @forelse($contacts as $contact)
+                                    @forelse($bookings as $booking)
                                         <tr>
                                             <td>{{$loop->index +1}}</td>
-                                            <td>{{$contact->name}}</td>
-                                            <td>{{$contact->email}}</td>
-                                            <td>{{$contact->subject}}</td>
+                                            <td>{{$booking->name}}</td>
+                                            <td>{{$booking->phone}}</td>
+                                            <td>{{$booking->email}}</td>
+                                            <td>{{$booking->property}}</td>
                                             <td>
-                                                  <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#editSession{{ $contact->id }}">
+                                                  {{-- <a class="btn btn-info btn-sm" href="#" data-toggle="modal" data-target="#editSession{{ $booking->id }}">
                                             <i class="fa fa-edit"></i>
-                                            </a>
+                                            </a> --}}
                                         
-                                                <a class="btn btn-danger btn-sm" href="#" onclick="event.preventDefault(); document.getElementById('delete{{ $contact->id }}').submit();" class="text-red">
+                                                <a class="btn btn-danger btn-sm" href="#" onclick="event.preventDefault(); document.getElementById('delete{{ $booking->id }}').submit();" class="text-red">
                                                 <i class="fa fa-trash"></i>
                                                 </a>
 
-                                        <form id="delete{{ $contact->id }}"
-                                        action="{{ route('delete.request',['id'=>$contact->id]) }}" method="POST" style="display: none;">
+                                        <form id="delete{{ $booking->id }}"
+                                        action="{{ route('delete.bookings',['id'=>$booking->id]) }}" method="POST" style="display: none;">
                                             {{ csrf_field() }}
                                             {{-- {{ Method_field('DELETE') }} --}}
                                         </form>  
                                             </td>
                                         </tr>
-                                         <div class="modal fade mt-5" id="editSession{{ $contact->id }}" tabindex="-1" role="dialog" aria-labelledby="editSession{{ $contact->id }}Label" aria-hidden="true">
+                                         {{-- <div class="modal fade mt-5" id="editSession{{ $booking->id }}" tabindex="-1" role="dialog" aria-labelledby="editSession{{ $booking->id }}Label" aria-hidden="true">
                                         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                             <div class="modal-content">
                                             <div class="modal-header">
@@ -77,13 +79,13 @@
                                                 <div class="modal-body">
                                                     <div>
                                                         <label>Subject</label>
-                                                        <input class="form-control" value="{{$contact->subject}}">
+                                                        <input class="form-control" value="{{$booking->subject}}">
                                                     </div>
                                                     <hr>
                                                     <div>
                                                         <lable>Request Message</label>
                                                         <p class="form-control">
-                                                            {{$contact->message}}
+                                                            {{$booking->message}}
                                                         
                                                         </p>
                                                     </div>
@@ -94,7 +96,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        </div>
+                                        </div> --}}
                                     @empty
 
                                     @endforelse

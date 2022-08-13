@@ -99,6 +99,25 @@
                             </div>
                             <!-- id="contactForm" -->
                             <div class="col-lg-6 col-12">
+                                    <div class="row justify-content-center">
+                                        @if ($message = Session::get('success'))
+                                            <div class="alert alert-success alert-block">
+                                                <button type="button" class="close" data-dismiss="alert">×</button> 
+                                                <strong>{{ $message }}</strong>
+                                            </div>
+                                        @endif
+
+                                        @if (count($errors) > 0)
+                                            <div class="alert alert-danger">
+                                                <strong>Error!</strong>
+                                                <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li>{{ $error }}</li>
+                                                @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                    </div>
                                 <div class="contact-form">
                                     <form class="form-wrap" id="contactForm" action="{{url('/admin/contact/create')}}" method="post">
                                         @csrf

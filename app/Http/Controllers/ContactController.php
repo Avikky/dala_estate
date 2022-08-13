@@ -32,6 +32,13 @@ class ContactController extends Controller
             'message' => $request->message,
         ]);
 
-        return back()->with('success', 'Request send successfully!');
+        return back()->with('success', 'Request sent successfully, we will contact you soon!');
+    }
+
+    public function delete($id)
+    {
+        Contact::destroy($id);
+
+        return back()->with('success', 'Request deleted successfully');
     }
 }
