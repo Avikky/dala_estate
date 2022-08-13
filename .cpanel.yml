@@ -1,0 +1,24 @@
+# general deployment code
+---
+deployment:
+  # - export DEPLOYPATH=/home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R app /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R bootstrap  /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R config  /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R database  /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R public /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R resources  /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R routes  /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R storage /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp -R tests /home/dalabmni/public_html/dalapropertyltd/
+  - /bin/cp .cpanel.yml /home/dalabmni/public_html/dalapropertyltd
+  - /bin/cp babel.config.js  /home/dalabmni/public_html/dalapropertyltd
+  - /bin/cp composer.json  /home/dalabmni/public_html/dalapropertyltd
+  - /bin/cp package-lock.json /home/dalabmni/public_html/dalapropertyltd
+  - /bin/cp package.json /home/dalabmni/public_html/dalapropertyltd
+  - /bin/cp phpunit.xml /home/dalabmni/public_html/dalapropertyltd
+  - /bin/cp README.md /home/dalabmni/public_html/dalapropertyltd
+  - /bin/cp server.php /home/dalabmni/public_html/dalapropertyltd
+  - /bin/cp webpack.mix.js /home/dalabmni/public_html/dalapropertyltd
+
+  
